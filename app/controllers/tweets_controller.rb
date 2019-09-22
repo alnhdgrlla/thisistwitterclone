@@ -7,10 +7,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      redirect_to tweets_path
-    end
+    @tweet = current_user.tweets.new(tweet_params)
+    @tweet.save
+    raise
+    redirect_to tweets_path
   end
 
   def destroy
@@ -19,6 +19,7 @@ class TweetsController < ApplicationController
   end
 
   private
+
   def tweet_params
     params.require(:tweet).permit(:body)
   end
