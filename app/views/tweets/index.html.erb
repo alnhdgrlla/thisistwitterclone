@@ -1,0 +1,7 @@
+<h1>Welcome to Tweeter!</h1>
+
+<%= render 'new' %>
+
+<% @tweets.each do |tweet| %>
+  <%= tweet.content %>
+<% end %>
