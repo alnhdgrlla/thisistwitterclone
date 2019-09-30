@@ -5,9 +5,9 @@
 <% @tweets.each do |tweet| %>
   <li>
   <%= tweet.content %> <br>
-  @<%= tweet.user.username%> <br>
+  @<%= link_to tweet.user.username, tweet.user%> <br>
   <%= tweet.created_at %> <br>
-  
+
   <%= link_to "delete", tweet_path(tweet), method: :delete, data: {confirm: 'Are you sure?'} %>
   </li>
-<% end %> 
+<% end %>
