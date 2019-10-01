@@ -6,8 +6,8 @@
   <li>
   <%= tweet.content %> <br>
   @<%= link_to tweet.user.username, tweet.user%> <br>
-  <%= tweet.created_at %> <br>
+  <small><%= tweet.created_at %></small> <br>
 
-  <%= link_to "delete", tweet_path(tweet), method: :delete, class: "btn" %>
+  <%= link_to "delete", tweet_path(tweet), method: :delete, class: "btn" if current_user == tweet.user %>
   </li>
 <% end %>
