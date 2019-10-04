@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'relationships/index'
+  get 'relationships/create'
+  get 'relationships/destroy'
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
@@ -8,4 +11,5 @@ Rails.application.routes.draw do
   root to: 'tweets#index'
   resources :tweets, only: [:index, :create, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
+  resources :relationships, only: [:index, :create, :destroy]
 end

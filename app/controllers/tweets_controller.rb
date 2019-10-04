@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
     #for new tweet form
     @tweet = Tweet.new
     #for tweet table
-    @tweets = Tweet.all.order("created_at DESC")
+    @tweets = current_user.feed.order("created_at DESC")
   end
 
   def new
