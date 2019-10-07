@@ -8,10 +8,14 @@ class User < ApplicationRecord
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: :follower_id
   has_many :followees, through: :active_relationships
-
+  
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: :followee_id
   has_many :followers, through: :passive_relationships
 
+  def following?(user)
+    followees.include?(user)
+  end
+  
   def follow(user)
     followees << user if !self.following?(user) && self != user
   end
@@ -20,8 +24,16 @@ class User < ApplicationRecord
     followees.delete(user)
   end
 
-  def following?(user)
-    followees.include?(user)
+  def total_tweet
+    Tweet.where(user_id: id).count
+  end
+
+  def total_following
+    Relationship.where(follower_id: id).count
+  end
+
+  def total_follower
+    Relationship.where(followee_id: id).count
   end
 
   def feed

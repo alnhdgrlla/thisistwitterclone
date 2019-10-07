@@ -1,6 +1,9 @@
 <h2>User Info</h2>
-<%=  @user.username %> <br>
-<%=  @user.bio %> <br>
+Username: <%=  @user.username %> <br>
+Total Tweet: <%= @user.total_tweet %><br>
+Total Following: <%= @user.total_following %><br>
+Total Follower: <%= @user.total_follower %><br>
+BIO: <%=  @user.bio %><br>
 <%= link_to "Edit profile", edit_user_path(@user) if current_user == @user %>
 <!-- Hide whole thing if User is self -->
 <% unless current_user == @user %>

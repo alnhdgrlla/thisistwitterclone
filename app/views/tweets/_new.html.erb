@@ -1,4 +1,4 @@
 <%= simple_form_for @tweet do |f| %>
-  <%= f.input :content, placeholder: "What's happening?" %>
+  <%= f.input :content, placeholder: "What's happening?", label: false %>
   <%= f.submit "Tweet!", class: "btn btn-primary" %>
 <% end %>

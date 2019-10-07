@@ -1,6 +1,5 @@
 class RelationshipsController < ApplicationController
 
-
   def create
     user = User.find(params[:followee_id])
     current_user.follow(user)

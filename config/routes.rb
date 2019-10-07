@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'relationships/index'
-  get 'relationships/create'
-  get 'relationships/destroy'
+
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
